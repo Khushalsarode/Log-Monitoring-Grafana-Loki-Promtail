@@ -22,7 +22,6 @@ This repository contains a Docker Compose setup for a full **Grafana Loki monito
 ## Architecture Diagram
 
 ![Monitoring Stack Diagram](./diagram.jpg)
-*Replace `diagram.png` with your actual diagram file.*
 
 **Explanation:**
 
