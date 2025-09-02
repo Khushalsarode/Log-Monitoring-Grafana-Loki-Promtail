@@ -1,0 +1,21 @@
+apiVersion: 1
+
+datasources:
+  - name: Loki
+    type: loki
+    access: proxy
+    orgId: 1
+    url: http://loki:3100 # Replace with your Loki instance URL
+    basicAuth: false
+    isDefault: true
+    version: 1
+    editable: true
+    jsonData:
+      maxLines: 1000 # Optional: Maximum number of lines to return per query
+      derivedFields: # Optional: Define derived fields for log parsing
+        - name: TraceID
+          matcherRegex: "traceID=(\\w+)"
+          url: "http://jaeger-query:16686/trace/$${__value__}"
+        - name: UserID
+          matcherRegex: "userID=(\\d+)"
+    secureJsonData: {} # For sensitive data like basicAuthPassword
